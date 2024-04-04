@@ -10,7 +10,7 @@ class Evento{
         string tipo;
         string ubicacion;
         int duracion;
-        string tema:
+        string tema;
         vector<Asistente> asistentes;
     public:
         Evento(string tipo, string ubicacion, int duracion, string tema);
