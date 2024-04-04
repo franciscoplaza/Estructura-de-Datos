@@ -16,5 +16,5 @@ string Asistente::getInstitucion(){return institucion;}
 void Asistente::setTipo(string tipo){this -> tipo = tipo;}
 void Asistente::setNombre(string nombre){this -> nombre = nombre;}
 void Asistente::setEdad(int edad){this -> edad = edad;}
-void Asistente::setEmpresaInstitucion(string institucion){this -> institucion = institucion;}
+void Asistente::setInstitucion(string institucion){this -> institucion = institucion;}
 Asistente::~Asistente(){};

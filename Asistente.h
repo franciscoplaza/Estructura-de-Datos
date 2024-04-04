@@ -19,4 +19,4 @@ class Asistente{
         void setEdad(int edad);
         void setInstitucion(string institucion);
         ~Asistente();
-}
+};
