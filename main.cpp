@@ -101,10 +101,14 @@ void mostrarAsistentesPorEvento(vector<Evento*> eventos){
     for(Evento* evento: eventos){
         i=1;
         cout<<"Evento: "<<evento->getTipo()<<" | Tema: "<<evento->getTema()<<" | Ubicación: "<<evento->getUbicacion()<<endl;
-        for (int j = 0; j<evento->getAsistentes().size(); j++){
-            asis = evento->getAsistentes()[j];
-            cout<<i++<<".Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
-            <<" | Empresa o institución: "<<asis->getInstitucion()<<endl;
+        if (evento->getAsistentes().size() == 0){
+            cout<<"Sin asistentes registrados para este evento"<<endl;
+        } else {
+            for (int j = 0; j<evento->getAsistentes().size(); j++){
+                asis = evento->getAsistentes()[j];
+                cout<<i++<<".Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
+                <<" | Empresa o institución: "<<asis->getInstitucion()<<endl;
+            }
         }
     }
 }
@@ -161,6 +165,15 @@ int main(){
                 break;
         }
     } while (opcion != 5);
+
+    for (Evento* evento: eventos){
+        for (Asistente* a: evento->getAsistentes()){
+            delete a;
+            cout<<"Se borró un asistente"<<endl;
+        }
+        delete evento;
+        cout<<"Se borró un evento"<<endl;
+    }
 
     return 0;
     
