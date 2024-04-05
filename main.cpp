@@ -5,7 +5,7 @@
 using namespace std;
 
 void mostrarMenu(){
-    cout<<"1. Crear evento\n2. Registrar asistentes\n3. Lista de asistentes\n4. Generar informe\n5. Salir"<<endl;
+    cout<<"\nMENÚ\n1. Crear evento\n2. Registrar asistentes\n3. Lista de asistentes\n4. Generar informe\n5. Salir"<<endl;
 }
 
 Evento* crearEvento(){
@@ -87,11 +87,34 @@ void mostrarAsistentes(vector<Evento*> eventos){
     for(Evento* evento: eventos){
         for (int j = 0; j<evento->getAsistentes().size(); j++){
             asis = evento->getAsistentes()[j];
-            cout<<i++<<"Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
+            cout<<i++<<".Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
             <<" | Empresa o institución: "<<asis->getInstitucion()<<" | Evento al que asiste: "<<evento->getTipo()
             <<" en "<<evento->getUbicacion()<<endl;
         }
     }
+}
+
+void mostrarAsistentesPorEvento(vector<Evento*> eventos){
+    int i;
+    Asistente* asis;
+    cout<<"\nAsistentes por Evento:"<<endl;
+    for(Evento* evento: eventos){
+        i=1;
+        cout<<"Evento: "<<evento->getTipo()<<" | Tema: "<<evento->getTema()<<" | Ubicación: "<<evento->getUbicacion()<<endl;
+        for (int j = 0; j<evento->getAsistentes().size(); j++){
+            asis = evento->getAsistentes()[j];
+            cout<<i++<<".Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
+            <<" | Empresa o institución: "<<asis->getInstitucion()<<endl;
+        }
+    }
+}
+
+void generarInforme(vector<Evento*> eventos){
+    cout<<"INFORME GENERAL DE EVENTOS"<<endl;
+    mostrarEventos(eventos);
+    mostrarAsistentesPorEvento(eventos);
+
+
 }
 
 int main(){
@@ -119,7 +142,7 @@ int main(){
                 asistente = crearAsistente();
                 mostrarEventos(eventos);
                 int numeroEscogido;
-                cout<<"Seleccione el número del evento al que desea agregar al asistente: "<<endl;
+                cout<<"Seleccione el número del evento al que desea agregar al asistente: ";
                 cin>>numeroEscogido;
 
                 eventos[numeroEscogido-1]->setAsistente(asistente);
@@ -128,7 +151,7 @@ int main(){
                 mostrarAsistentes(eventos);
                 break;
             case 4:
-                cout<<"4"<<endl;
+                generarInforme(eventos);
                 break;
             case 5:
                 cout<<"Saliendo..."<<endl;
