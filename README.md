@@ -10,5 +10,5 @@ Orden de compilación:
 (g++ -o main.exe Asistente.cpp Evento.cpp main.cpp)
 
 Objetos creados:
-Evento* e1 = new Evento("Concierto", "Coquimbo", 120, "Rock");
-Evento* e2 = new Evento("Conferencia", "Copiapo", 30, "Salud");
+-   Evento* e1 = new Evento("Concierto", "Coquimbo", 120, "Rock");
+-   Evento* e2 = new Evento("Conferencia", "Copiapo", 30, "Salud");
