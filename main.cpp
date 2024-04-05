@@ -80,6 +80,20 @@ void mostrarEventos(vector<Evento*> eventos){
     }
 }
 
+void mostrarAsistentes(vector<Evento*> eventos){
+    int i = 1;
+    Asistente* asis;
+    cout<<"Lista de Asistentes:"<<endl;
+    for(Evento* evento: eventos){
+        for (int j = 0; j<evento->getAsistentes().size(); j++){
+            asis = evento->getAsistentes()[j];
+            cout<<i++<<"Tipo: "<<asis->getTipo()<<" | Nombre: "<<asis->getNombre()<<" | Edad: "<<asis->getEdad()
+            <<" | Empresa o institución: "<<asis->getInstitucion()<<" | Evento al que asiste: "<<evento->getTipo()
+            <<" en "<<evento->getUbicacion()<<endl;
+        }
+    }
+}
+
 int main(){
     vector<Evento*> eventos;
     int opcion;
@@ -110,10 +124,8 @@ int main(){
 
                 eventos[numeroEscogido-1]->setAsistente(asistente);
                 break;
-
-
             case 3:
-                cout<<"3"<<endl;
+                mostrarAsistentes(eventos);
                 break;
             case 4:
                 cout<<"4"<<endl;
