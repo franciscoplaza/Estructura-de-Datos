@@ -4,10 +4,26 @@
 #include "Asistente.h"
 using namespace std;
 
+/**
+ * Descripción:
+ *      Desplegar el menú correspondiente a la interfaz de usuario
+ * @param
+ *      No recibe parámetros de entrada
+ * @return
+ *      Despliegue del menú
+ */
 void mostrarMenu(){
     cout<<"\nMENÚ\n1. Crear evento\n2. Registrar asistentes\n3. Lista de asistentes\n4. Generar informe\n5. Salir"<<endl;
 }
 
+/**
+ * Descripción:
+ *      Crear un evento según sus atributos y guardar su dirección en un puntero
+ * @param
+ *      No recibe parámetros de entrada
+ * @return
+ *      Puntero de Evento
+ */
 Evento* crearEvento(){
     string tipo;
     string ubicacion;
@@ -30,6 +46,14 @@ Evento* crearEvento(){
     return evento;
 }
 
+/**
+ * Descripción:
+ *      Crear un asistente según sus atributos y guardar su dirección en un puntero
+ * @param
+ *      No recibe parámetros de entrada
+ * @return
+ *      Puntero de Asistente
+ */
 Asistente* crearAsistente(){
     string tipo;
     string nombre;
@@ -52,26 +76,14 @@ Asistente* crearAsistente(){
     return asistente;
 }
 
-void mostrarTiposEventos(vector<Evento*> eventos){
-    vector<string> tipos;
-    for(Evento* evento: eventos){
-        string tipo = evento->getTipo();
-
-        bool encontrado = false;
-        for (int i = 0; i < tipos.size(); i++){
-            if(tipos[i] == tipo){
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado){
-            tipos.push_back(tipo);
-        }
-        
-    }
-}
-
+/**
+ * Descripción:
+ *      Desplegar los eventos creados y sus atributos
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Despliegue de los eventos
+ */
 void mostrarEventos(vector<Evento*> eventos){
     int i = 1;
     cout<<"Lista de Eventos:"<<endl;
@@ -80,6 +92,14 @@ void mostrarEventos(vector<Evento*> eventos){
     }
 }
 
+/**
+ * Descripción:
+ *      Desplegar los asistentes registrados en los eventos y sus atributos
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Despliegue de todos los asistentes
+ */
 void mostrarAsistentes(vector<Evento*> eventos){
     int i = 1;
     Asistente* asis;
@@ -94,6 +114,15 @@ void mostrarAsistentes(vector<Evento*> eventos){
     }
 }
 
+/**
+ * Descripción:
+ *      Desplegar los asistentes registrados por cada evento y organizados por el evento 
+ *      al que asisten, además de sus atributos
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Despliegue de los asistentes por cada evento
+ */
 void mostrarAsistentesPorEvento(vector<Evento*> eventos){
     int i;
     Asistente* asis;
@@ -113,6 +142,14 @@ void mostrarAsistentesPorEvento(vector<Evento*> eventos){
     }
 }
 
+/**
+ * Descripción:
+ *      Generar un informe general que muestre todos los eventos y los asistentes de cada uno
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Despliegue del informe
+ */
 void generarInforme(vector<Evento*> eventos){
     cout<<"INFORME GENERAL DE EVENTOS"<<endl;
     mostrarEventos(eventos);
