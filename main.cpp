@@ -86,7 +86,7 @@ Asistente* crearAsistente(){
  */
 void mostrarEventos(vector<Evento*> eventos){
     int i = 1;
-    cout<<"Lista de Eventos:"<<endl;
+    cout<<"\nLista de Eventos:"<<endl;
     for(Evento* evento: eventos){
         cout<<i++<<".Tipo de evento: "<<evento->getTipo()<<" | Tema: "<<evento->getTema()<<" | Ubicación: "<<evento->getUbicacion()<<endl;
     }
@@ -144,6 +144,44 @@ void mostrarAsistentesPorEvento(vector<Evento*> eventos){
 
 /**
  * Descripción:
+ *      Calcular la cantidad de asistentes total entre todos los eventos
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Cantidad de asistentes total
+ */
+int cantidadTotalAsistentes(vector<Evento*> eventos){
+    int total = 0;
+    for(Evento* evento: eventos){
+        total += evento->getAsistentes().size();
+    }
+    return total;
+}
+
+/**
+ * Descripción:
+ *      Calcular la promedio de edad de los asistentes entre todos los eventos
+ * @param
+ *      vector<Evento*> eventos     Listado de eventos
+ * @return
+ *      Promedio de edad de los asistentes
+ */
+float promedioEdadAsistentes(vector<Evento*> eventos){
+    int sumador = 0;
+    Asistente* asis;
+    for(Evento* evento: eventos){
+        for (int i = 0; i<evento->getAsistentes().size(); i++){
+            asis = evento->getAsistentes()[i];
+            sumador += asis->getEdad();
+        }
+    }
+
+    float promedio = static_cast<float>(sumador) / cantidadTotalAsistentes(eventos);
+    return promedio;
+}
+
+/**
+ * Descripción:
  *      Generar un informe general que muestre todos los eventos y los asistentes de cada uno
  * @param
  *      vector<Evento*> eventos     Listado de eventos
@@ -151,9 +189,11 @@ void mostrarAsistentesPorEvento(vector<Evento*> eventos){
  *      Despliegue del informe
  */
 void generarInforme(vector<Evento*> eventos){
-    cout<<"INFORME GENERAL DE EVENTOS"<<endl;
+    cout<<"\nINFORME GENERAL DE EVENTOS"<<endl;
     mostrarEventos(eventos);
     mostrarAsistentesPorEvento(eventos);
+    cout<<"\nEl total de asistentes entre todos los eventos es de "<<cantidadTotalAsistentes(eventos)<<endl;
+    cout<<"\nEl promedio de edad entre todos los asistentes es de "<<promedioEdadAsistentes(eventos)<<" años"<<endl;
 
 
 }
